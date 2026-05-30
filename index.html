@@ -194,6 +194,33 @@ footer {
 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 .fade-in { animation: fadeIn 1s ease forwards; }
+
+.countdown {
+  text-align: center;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeIn 1s ease 0.4s forwards;
+}
+.countdown-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.3rem;
+}
+.countdown-number {
+  font-family: DM Serif Display, serif;
+  font-size: clamp(4rem, 20vw, 7rem);
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+  letter-spacing: -0.03em;
+}
+.countdown-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.3rem;
+}
 ```
 
   </style>
@@ -213,6 +240,13 @@ footer {
       <div class="petal">🌸</div>
       <p class="for-you">a page, just for you</p>
       <h1>Hey, <em>Arya Mol ❤️</em></h1>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown">
+      <p class="countdown-label">together for</p>
+      <div class="countdown-number" id="days-count">0</div>
+      <p class="countdown-sub">days and counting 🫂</p>
     </div>
     <div class="poem">
       <p>
@@ -270,6 +304,12 @@ footer {
         }
       } catch(err) { alert('Something went wrong!'); }
     }
+
+    // Days together counter
+    const start = new Date('2023-03-22');
+    const today = new Date();
+    const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+    document.getElementById('days-count').textContent = diff.toLocaleString();
   </script>
 
 </body>
